@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Set vi mode because emacs is useless :)
 set -o vi
 
 export EDITOR="nvim"
