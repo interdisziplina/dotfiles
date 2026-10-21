@@ -1,23 +1,3 @@
-"  
-"
-"    ██
-"    ██
-"    ██
-"    ██         ░████▒    ░████░
-"    ██        ░██████▒  ░██████░
-"    ██        ██▒  ▒██  ███  ███
-"    ██        ████████  ██░  ░██
-"    ██        ████████  ██    ██
-"    ██        ██        ██░  ░██
-"    ██        ███░  ▒█  ███  ███
-"    ████████  ░███████  ░██████░
-"    ████████   ░█████▒   ░████░
-
-
-"    Neovim configuration by Leo Blume <leoblume@gmx.de>
-"    Based on configuration by Jess Archer <jess@jessarcher.com>
-
-
 " ----------------------------------------------------
 "  General settings
 " ----------------------------------------------------
@@ -42,7 +22,7 @@ set foldmethod=indent
 set number relativenumber
 set wildmode=list:longest
 set clipboard=unnamedplus
-set shiftwidth=4 tabstop=4
+set shiftwidth=4 smarttab
 set wildignore=*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img
 
 let g:python3_host_prog = '/usr/bin/python3'
@@ -54,8 +34,10 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 let mapleader="\<space>"
 
-nnoremap <leader>ve :tabnew $MYVIMRC<cr> " config-edit
-nnoremap <leader>vs :source $MYVIMRC<cr> " config-source
+" config-edit
+nnoremap <leader>ve :tabnew $MYVIMRC<cr>
+" config-source
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
 nnoremap <leader>k :nohlsearch<cr>
 
@@ -95,7 +77,7 @@ source ~/.config/nvim/plugins/alias.vim
 source ~/.config/nvim/plugins/autoclose.vim
 source ~/.config/nvim/plugins/carbon-now.vim
 source ~/.config/nvim/plugins/commentary.vim
-source ~/.config/nvim/plugins/copilot.vim
+" source ~/.config/nvim/plugins/copilot.vim
 source ~/.config/nvim/plugins/ctrlsf.vim
 source ~/.config/nvim/plugins/coc.vim
 " source ~/.config/nvim/plugins/easy-align.vim
@@ -105,6 +87,8 @@ source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/gruvbox.vim
 source ~/.config/nvim/plugins/gist.vim
 source ~/.config/nvim/plugins/git-messenger.vim
+" source ~/.config/nvim/plugins/hardtime.vim
+" source ~/.config/nvim/plugins/lastplace.vim
 source ~/.config/nvim/plugins/loremimpsum.vim
 source ~/.config/nvim/plugins/markdown-preview.vim
 source ~/.config/nvim/plugins/movelines.vim
@@ -123,7 +107,7 @@ source ~/.config/nvim/plugins/svelte.vim
 source ~/.config/nvim/plugins/text-objects.vim
 source ~/.config/nvim/plugins/tmux-navigator.vim
 source ~/.config/nvim/plugins/typst.vim
-source ~/.config/nvim/plugins/vimsence.vim
+" source ~/.config/nvim/plugins/vimsence.vim
 source ~/.config/nvim/plugins/which-key.vim
 
 call plug#end()

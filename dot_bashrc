@@ -11,26 +11,30 @@ set -o vi
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-alias ls='exa --icons'
-alias la='exa -a --icons'
-alias ll='exa --long -a --icons'
+alias ls='exa --icons always'
+alias la='exa -a --icons always'
+alias ll='exa --long -a --icons always'
 alias tree='exa --tree'
 alias fmt='cargo +nightly fmt'
 alias cal='cal -m'
 alias auth='sudo -v -p "authenticate: "'
+alias watch='watch -n 1'
 
 alias vim='nvim'
 alias py='python'
 
 alias cat='bat'
 alias bathelp='bat --plain --language=help'
+alias llm='uvx --with llm-gemini llm'
 
 alias che='chezmoi'
-alias btop='btop --utf-force'
 
 alias grep='grep --color=auto'
 
 alias share='live-server --host=192.162.2.117'
+
+alias signal-cli='~/Sources/signal-cli-git/build/install/signal-cli/bin/signal-cli'
+alias busgcc='gcc -std=c17 -Wall -Wextra -Wpedantic -fsanitize=address,undefined'
 
 export HISTFILESIZE=
 export HISTSIZE=
@@ -46,27 +50,36 @@ alias h='help'
 
 pacman() {
 	echo "-" > /tmp/update-counter
+	trap 'rm -f /tmp/update-counter' RETURN
 	auth
-	sudo pacman "$@";
-	rm /tmp/update-counter
+	sudo pacman "$@"
 }
 
 
 pathprepend() {
-	if ! grep -q "$PATH" <<<"$1"; then
+	if ! grep -q "$1" <<<"$PATH"; then
 		PATH="$1:$PATH"
 	fi
 }
 pathappend() {
-	if ! grep -q "$PATH" <<<"$1"; then
+	if ! grep -q "$1" <<<"$PATH"; then
 		PATH="$PATH:$1"
 	fi
+}
+
+fixlock() {
+	hyprctl --instance 0 'keyword misc:allow_session_lock_restore 1'
+	sleep 0.5
+	hyprctl --instance 0 'dispatch exec hyprlock'
+	sleep 0.5
+	logout
 }
 
 pathprepend "$HOME/.local/bin"
 pathappend "$HOME/.cargo/bin"
 pathprepend "$HOME/.config/rofi/scripts/"
 pathappend "/opt/gurobi1103/linux64/bin"
+pathappend "$HOME/.local/share/pnpm/bin"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/gurobi1103/linux64/lib"
 
@@ -98,3 +111,15 @@ esac
 export GRIM_DEFAULT_DIR=~/Pictures/Screenshots
 export GUROBI_HOME=/opt/gurobi1103/linux64
 export GRB_LICENSE_FILE=~/.local/share/gurobi/gurobi.lic
+
+. "$HOME/.atuin/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash --disable-up-arrow)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/home/lina/.opencode/bin:$PATH

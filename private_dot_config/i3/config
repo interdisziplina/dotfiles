@@ -1,3 +1,5 @@
+# LEGACY / UNUSED: superseded by the Hyprland setup (hypr/, waybar/).
+
 # sed::replace_automatically::mod_key_based_on_keyboard
 set $mod Mod4
 

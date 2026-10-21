@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# LEGACY / UNUSED: superseded by waybar.
 
 polybar-msg cmd quit
 
