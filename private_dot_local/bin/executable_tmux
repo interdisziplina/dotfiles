@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-/usr/bin/tmux $@
+exec /usr/bin/tmux "$@"

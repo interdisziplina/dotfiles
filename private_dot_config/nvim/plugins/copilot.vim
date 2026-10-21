@@ -1,6 +1,6 @@
 Plug 'github/copilot.vim'
 
-let g:copilot_filenames = {
+let g:copilot_filetypes = {
         \ 'python': v:false,
         \ 'javascript': v:false,
         \ 'rust': v:false,
